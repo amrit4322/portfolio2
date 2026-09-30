@@ -1,341 +1,146 @@
-const profile = {
-  name: 'Amritjot Singh',
-  email: 'aj044223@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/amritjot-singh4322/',
-  github: 'https://github.com/amrit4322',
-  resume: '/Amritjot_Singh_Resume.pdf',
-  portrait: '/amritjot-portrait.webp',
-}
+import { useEffect, useRef, useState } from 'react'
+import portfolio from './data/portfolio.json'
+import { Dialog, ExternalLink, Icon, Reveal, SectionHead, Tags, spotlight } from './components/ui'
+import { usePreferences, useScrollSpy } from './hooks/usePortfolio'
 
-const projects = [
-  {
-    number: '01',
-    category: 'Civic technology',
-    title: 'CoBuild',
-    description:
-      'Led the architecture and team delivery of a civic-data platform at GovHack 2025. We brought public datasets, mapping and scoring together to make urban-planning decisions easier to explore, all within 48 hours.',
-    tags: ['React', 'Node.js', 'Python', 'Public data'],
-    badge: 'Victorian State Winner',
-    url: 'https://github.com/amrit4322/coBuild',
-  },
-  {
-    number: '02',
-    category: 'AI research',
-    title: 'PIPER',
-    description:
-      'My Deakin research compares PPO reinforcement learning with LLM and vision-language approaches on drawing-based physical reasoning. The experiments surfaced stronger trajectory and target performance for PPO, alongside stability limits.',
-    tags: ['Python', 'PyTorch', 'Gymnasium', 'Reinforcement learning'],
-  },
-  {
-    number: '03',
-    category: 'Product building',
-    title: 'DigiSpy',
-    description:
-      'An AI and cyber-safety learning platform for children. I’m building structured missions, agent accounts and live teacher controls that turn complex digital concepts into hands-on activities.',
-    tags: ['Next.js', 'Supabase', 'Realtime', 'Education'],
-  },
-  {
-    number: '04',
-    category: 'Backend engineering',
-    title: 'BlockAgile & Note Wallet',
-    description:
-      'At Antier, I built dashboards and distributed services. BlockAgile reduced manual progress reporting by about 50%; gRPC service work on Note Wallet improved response time by about 30%.',
-    tags: ['React', 'FastAPI', 'gRPC', 'Docker'],
-  },
+const { profile, specialties, projects, repositories, experience, skillGroups, highlights, content } = portfolio
+
+// Vite rewrites BASE_URL at build time, so public assets work on a domain or a repository URL.
+const asset = path => /^(https?:|data:)/.test(path) ? path : `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+const navigation = [
+  ...(projects.length ? [['work', 'Work']] : []),
+  ...(repositories.length ? [['repositories', 'Code']] : []),
+  ...(experience.length ? [['about', 'Experience']] : []),
+  ...(skillGroups.length ? [['skills', 'Skills']] : []),
+  ['contact', 'Contact'],
 ]
+const sectionIds = navigation.map(([id]) => id)
 
-const repositories = [
-  {
-    type: 'Civic data · React / Python',
-    name: 'coBuild',
-    description: 'GovHack prototype with mapping, feedback and planning views.',
-    url: 'https://github.com/amrit4322/coBuild',
-  },
-  {
-    type: 'Realtime · React / Node',
-    name: 'chatApp',
-    description: 'Frontend and backend code for a real-time messaging application.',
-    url: 'https://github.com/amrit4322/chatApp',
-  },
-  {
-    type: 'Computer vision · Python',
-    name: 'objectDetection',
-    description: 'A containerised object detection application with a Python server and web templates.',
-    url: 'https://github.com/amrit4322/objectDetection',
-  },
-  {
-    type: 'DevSecOps · CI/CD',
-    name: '8.2CDevSecOps',
-    description: 'A public course project documenting security and delivery practice.',
-    url: 'https://github.com/amrit4322/8.2CDevSecOps',
-  },
-]
-
-const milestones = [
-  {
-    date: '2025 — 2026',
-    title: 'Data science research · Deakin University',
-    description: 'Physical reasoning experiments across reinforcement learning and AI models.',
-  },
-  {
-    date: '2025',
-    title: 'GovHack Victorian State Winner',
-    description: 'Led CoBuild’s technical direction and delivery during a 48-hour build.',
-  },
-  {
-    date: '2023 — 2024',
-    title: 'Software Engineer · Antier Solutions',
-    description: 'Built full stack features, APIs, analytics dashboards and distributed backend services.',
-  },
-  {
-    date: '2025 — present',
-    title: 'Operations & Inventory · ID Logistics',
-    description: 'Investigate system and stock exceptions for Amazon client operations in Melbourne.',
-  },
-]
-
-const skills = [
-  ['Languages and foundations', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'Java', 'C++', 'Data structures', 'OOP'],
-  ['Frontend and product', 'React', 'Next.js', 'HTML / CSS', 'Tailwind CSS', 'Responsive UI', 'UI components'],
-  ['Backend and data', 'FastAPI', 'Node.js', 'Express', 'REST', 'gRPC', 'PostgreSQL', 'MongoDB', 'Redis'],
-  ['AI, ML and analysis', 'PyTorch', 'scikit-learn', 'TensorFlow', 'OpenCV', 'YOLOv8', 'PPO', 'Gymnasium', 'Model evaluation'],
-  ['Cloud and delivery', 'Docker', 'Azure', 'AWS', 'Kubernetes', 'GitHub Actions', 'CI/CD'],
-  ['Engineering habits', 'API design', 'Unit and integration testing', 'Debugging', 'Performance optimisation', 'Code review', 'Agile delivery'],
-]
-
-function ExternalLink({ href, children, className }) {
-  return (
-    <a href={href} className={className} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  )
-}
-
-function SectionHead({ kicker, title, intro }) {
-  return (
-    <div className="sectionhead">
-      <div>
-        <div className="kicker">{kicker}</div>
-        <h2>{title}</h2>
+function Header({ preferences }) {
+  const { active, progressRef } = useScrollSpy(sectionIds)
+  const [menu, setMenu] = useState(false)
+  const menuRef = useRef(null)
+  useEffect(() => {
+    const close = event => { if (event.key === 'Escape') { setMenu(false); menuRef.current?.focus() } }
+    document.addEventListener('keydown', close)
+    return () => document.removeEventListener('keydown', close)
+  }, [])
+  return <header className="header">
+    <div className="scroll-progress" ref={progressRef} aria-hidden="true"/>
+    <nav className="container nav" aria-label="Primary">
+      <a className="brand" href="#top" onClick={() => setMenu(false)}><span className="monogram">{profile.initials}</span><span>{profile.name}</span></a>
+      <div className="nav-tools">
+        <button type="button" className="icon-button" onClick={preferences.toggleTheme} aria-label={`Switch to ${preferences.theme === 'dark' ? 'light' : 'dark'} theme`} title="Change theme"><Icon name={preferences.theme === 'dark' ? 'sun' : 'moon'}/></button>
+        {/* <button type="button" className="icon-button motion-control" onClick={preferences.toggleMotion} disabled={preferences.reduced} aria-label={preferences.reduced ? 'Motion reduced by your device setting' : preferences.motionOff ? 'Resume animations' : 'Pause animations'} title={preferences.reduced ? 'Your device requests reduced motion' : preferences.motionOff ? 'Resume animations' : 'Pause animations'}><Icon name={preferences.motionOff ? 'play' : 'pause'}/></button> */}
+        <button type="button" ref={menuRef} className="icon-button menu-toggle" aria-expanded={menu} aria-controls="main-navigation" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'}/></button>
       </div>
-      {intro && <p className="sectionintro">{intro}</p>}
-    </div>
-  )
+      <div className={`nav-links ${menu ? 'open' : ''}`} id="main-navigation">
+        {navigation.map(([id, label]) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined} onClick={() => setMenu(false)}>{label}</a>)}
+        <a className="resume-link" href={asset(profile.resume)} download>Résumé</a>
+      </div>
+    </nav>
+  </header>
 }
 
-function Header() {
-  return (
-    <header>
-      <nav className="wrap nav" aria-label="Primary">
-        <a className="brand" href="#top" aria-label="Amritjot Singh, back to top">
-          <span className="mark">AS</span> {profile.name}
-        </a>
-        <div className="navlinks">
-          <a href="#work">Work</a>
-          <a href="#repositories">Code</a>
-          <a href="#about">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a className="navcta" href={profile.resume} download>Download résumé</a>
-      </nav>
-    </header>
-  )
-}
-
-function Hero() {
-  return (
-    <>
-      <div className="hero" id="top">
-        <div className="wrap">
-          <div>
-            <div className="eyebrow">Software engineer · Data science graduate</div>
-            <h1>I build where <em>software meets intelligence.</em></h1>
-            <p className="lead">
-              I’m Amritjot, a Melbourne-based engineer who turns complex problems into useful products. My work spans full stack systems, applied AI and data, from award-winning civic tech to research in physical reasoning.
-            </p>
-            <div className="actions">
-              <a className="button primary" href="#work">Explore my work</a>
-              <a className="button secondary" href={`mailto:${profile.email}`}>Get in touch</a>
-            </div>
-            <p className="location"><strong>Melbourne, Australia</strong> · Open to software, data and AI opportunities</p>
+function Hero({ setFocus }) {
+  const [selected, setSelected] = useState(specialties[0]?.id)
+  const specialty = specialties.find(item => item.id === selected) || specialties[0]
+  return <section className="hero" id="top" onPointerMove={spotlight} aria-labelledby="hero-title">
+    <div className="hero-mesh" aria-hidden="true"/>
+    <div className="container hero-grid">
+      <div className="hero-copy">
+        <span className="eyebrow">{profile.role}</span>
+        <h1 id="hero-title">{profile.headline}<br/><em>{profile.headlineAccent}</em></h1>
+        <p className="hero-bio">{profile.bio}</p>
+        {specialty && <div className="focus-switcher">
+          <div className="focus-options" aria-label="Explore my focus">
+            {specialties.map(item => <button type="button" key={item.id} aria-pressed={selected === item.id} onClick={() => setSelected(item.id)}>{item.label}</button>)}
           </div>
-          <figure className="portrait">
-            <img src={profile.portrait} width="1086" height="1448" alt="Portrait of Amritjot Singh" fetchPriority="high" />
-            <figcaption>Amritjot Singh <span>Software · Data · AI</span></figcaption>
-          </figure>
-        </div>
+          <div className="focus-description" key={specialty.id}><p>{specialty.description}</p><a href="#work" onClick={() => setFocus(specialty.projectFocus)}>Explore {specialty.label.toLowerCase()} work</a></div>
+        </div>}
+        <div className="hero-actions"><a className="button primary" href="#contact">Let’s connect</a><a className="button secondary" href={asset(profile.resume)} download>Download résumé</a></div>
+        <p className="location">{profile.location}<span>{profile.availability}</span></p>
       </div>
-      <div className="proof">
-        <div className="wrap">
-          <div className="proofitem"><strong>GovHack 2025</strong><span>Victorian State Winner · CoBuild</span></div>
-          <div className="proofitem"><strong>Master of Data Science</strong><span>Deakin University · completed 2026</span></div>
-          <div className="proofitem"><strong>Full stack + AI</strong><span>Industry engineering and applied research</span></div>
-        </div>
-      </div>
-    </>
-  )
+      <div className="portrait-stage"><img className="portrait-photo" src={asset(profile.portrait)} width="1086" height="1448" alt={profile.portraitAlt} fetchPriority="high"/></div>
+    </div>
+    <a className="scroll-cue" href="#work">Keep exploring<span aria-hidden="true"/></a>
+  </section>
 }
 
-function Work() {
-  return (
-    <section className="section" id="work">
-      <div className="wrap">
-        <SectionHead
-          kicker="Selected work"
-          title="Problems worth building for."
-          intro="A few examples of how I move between research, software engineering and real-world use."
-        />
-        <div className="projectgrid">
-          {projects.map((project) => (
-            <article className="project" key={project.title}>
-              <span className="projectno">{project.number} / {project.category.toUpperCase()}</span>
-              {project.badge && <span className="award">{project.badge.toUpperCase()}</span>}
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              {project.url && <ExternalLink href={project.url} className="repo">View source and project notes</ExternalLink>}
-              <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+function Work({ focus, setFocus, onProject }) {
+  const options = ['All work', ...new Set(projects.map(project => project.focus).filter(Boolean))]
+  const shown = focus === 'All work' ? projects : projects.filter(project => project.focus === focus)
+  return <section className="section" id="work"><div className="container">
+    <SectionHead {...content.sections.work} number="01"/>
+    <div className="filter-row"><div className="filters" aria-label="Project focus">{options.map(option => <button type="button" key={option} className="pill" aria-pressed={focus === option} onClick={() => setFocus(option)}>{option}</button>)}</div><span className="result-count" aria-live="polite">{shown.length} {shown.length === 1 ? 'project' : 'projects'}</span></div>
+    <div className="project-grid">
+      {shown.map(project => <Reveal as="article" className="project-card spotlight" key={project.id} onPointerMove={spotlight}>
+        <div className="card-top"><span className="mono">{String(projects.indexOf(project)+1).padStart(2,'0')} / {project.category}</span>{project.badge && <span className="badge">{project.badge}</span>}</div>
+        <div className="project-glyph" aria-hidden="true"><span/><span/><span/></div>
+        <h3>{project.title}</h3><p>{project.description}</p><Tags items={project.tags}/>
+        <div className="card-bottom"><button type="button" className="text-button" onClick={() => onProject(project)}>Explore project <Icon name="plus" size={18}/></button>{project.url && <ExternalLink href={project.url} className="small-link">Source code</ExternalLink>}</div>
+      </Reveal>)}
+    </div>
+    {shown.length === 0 && <p className="empty">No projects in this focus yet. <button className="text-button" onClick={() => setFocus('All work')}>Show all work</button></p>}
+  </div></section>
 }
 
 function Repositories() {
-  return (
-    <section className="section" id="repositories">
-      <div className="wrap">
-        <SectionHead
-          kicker="Public code"
-          title="Open the repository."
-          intro="Selected public work you can inspect. The strongest current project is first; the others show earlier experiments and engineering practice."
-        />
-        <div className="repogrid">
-          {repositories.map((repo) => (
-            <article className="repocard" key={repo.name}>
-              <span className="type">{repo.type.toUpperCase()}</span>
-              <h3>{repo.name}</h3>
-              <p>{repo.description}</p>
-              <ExternalLink href={repo.url}>View repository</ExternalLink>
-            </article>
-          ))}
-        </div>
-        <ExternalLink href={`${profile.github}?tab=repositories`} className="githuball">Browse all public repositories</ExternalLink>
-      </div>
-    </section>
-  )
+  return <section className="section code-section" id="repositories"><div className="container">
+    <SectionHead {...content.sections.repositories} number="02"/>
+    <div className="repo-grid">{repositories.map(repo => <Reveal as="article" className="repo-card spotlight" key={repo.id} onPointerMove={spotlight}><div className="repo-label"><Icon name="code"/><span className="mono">{repo.type}</span></div><h3>{repo.name}</h3><p>{repo.description}</p><Tags items={repo.tags}/><ExternalLink href={repo.url} className="repo-link">View repository</ExternalLink></Reveal>)}</div>
+    <ExternalLink href={`${profile.github}?tab=repositories`} className="button secondary browse-code">Browse all public repositories</ExternalLink>
+  </div></section>
 }
 
 function About() {
-  return (
-    <section className="section about" id="about">
-      <div className="wrap aboutgrid">
-        <div>
-          <div className="kicker">A bit about me</div>
-          <h2>Curious enough to research it. Practical enough to ship it.</h2>
-          <p>I completed a Master of Data Science at Deakin after studying computer science engineering. That combination shapes how I work: test assumptions with data, design understandable systems, and build for the people who use them.</p>
-          <p className="small">I’ve also spoken about Docker at Microsoft Melbourne and worked with teams across engineering, university and high-volume operations.</p>
-        </div>
-        <div className="journey">
-          {milestones.map((item) => (
-            <div className="milestone" key={item.title}>
-              <time>{item.date.toUpperCase()}</time>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+  return <section className="section about-section" id="about"><div className="container about-grid">
+    <Reveal className="about-intro"><span className="eyebrow">03 / {content.about.kicker}</span><h2>{content.about.title}</h2>{content.about.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</Reveal>
+    <div className="timeline">{experience.map((item,index) => <Reveal key={item.id}><details className="experience" name="career" open={index === 0}><summary><span className="mono">{item.date}</span><h3>{item.title}</h3><span className="expand-icon"><Icon name="plus" size={18}/></span></summary><div className="experience-detail"><p>{item.description}</p>{item.details?.filter(detail => detail !== item.description).length > 0 && <ul>{item.details.filter(detail => detail !== item.description).map(detail => <li key={detail}>{detail}</li>)}</ul>}{item.tags && <Tags items={item.tags}/>}</div></details></Reveal>)}</div>
+  </div></section>
 }
 
-function Skills() {
-  return (
-    <section className="section" id="skills">
-      <div className="wrap">
-        <SectionHead
-          kicker="Technical skills"
-          title="What I build with."
-          intro="I work across the path from prototype to deployed product, with research depth in machine learning and practical experience building services and interfaces."
-        />
-        <div className="skillmatrix">
-          {skills.map(([category, ...items]) => (
-            <div className="skillrow" key={category}>
-              <h3>{category}</h3>
-              <div className="skillpills">{items.map((item) => <span key={item}>{item}</span>)}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+function Skills({ onProject }) {
+  const [category,setCategory] = useState('all')
+  const [query,setQuery] = useState('')
+  const [selected,setSelected] = useState([])
+  const [matchMode,setMatchMode] = useState('all')
+  const groups = skillGroups.filter(group => category === 'all' || group.id === category)
+  const matching = groups.map(group => ({...group,items:group.items.filter(skill => skill.toLowerCase().includes(query.toLowerCase().trim()))})).filter(group => group.items.length)
+  const matches = item => selected.length > 0 && (matchMode === 'all' ? selected.every(skill => item.skills?.includes(skill)) : selected.some(skill => item.skills?.includes(skill)))
+  const matchingProjects = projects.filter(matches)
+  const matchingRepos = repositories.filter(matches)
+  const toggleSkill = skill => setSelected(current => current.includes(skill) ? current.filter(item => item !== skill) : [...current,skill])
+  return <section className="section" id="skills"><div className="container">
+    <SectionHead {...content.sections.skills} number="04"/>
+    <div className="skill-controls"><label className="search-field"><Icon name="search"/><span className="sr-only">Search skills</span><input value={query} onChange={event=>setQuery(event.target.value)} placeholder="Find a skill, e.g. Python" type="search"/></label><label className="category-field"><span className="sr-only">Skill category</span><select value={category} onChange={event=>setCategory(event.target.value)}><option value="all">All categories</option>{skillGroups.map(group=><option key={group.id} value={group.id}>{group.title}</option>)}</select></label></div>
+    <div className="skill-layout"><div className="skill-groups">{matching.map(group=><Reveal className="skill-group" key={group.id}><div className="skill-group-heading"><h3>{group.title}</h3><span className="mono">{group.items.length}</span></div><div className="skill-pills">{group.items.map(skill=><button type="button" key={skill} aria-pressed={selected.includes(skill)} onClick={()=>toggleSkill(skill)}>{skill}</button>)}</div></Reveal>)}{!matching.length && <p className="empty">No matching skills. <button type="button" className="text-button" onClick={()=>{setQuery('');setCategory('all')}}>Reset search</button></p>}</div>
+      <aside id="skill-context" className="skill-context" aria-live="polite"><span className="eyebrow">Skills in practice</span><h3>{selected.length ? `${selected.length} ${selected.length === 1 ? 'skill' : 'skills'} selected` : 'Choose a skill'}</h3>{!selected.length ? <p>Select a skill to see the projects and public repositories where I used it.</p> : <><div className="selected-skills">{selected.map(skill=><button type="button" key={skill} onClick={()=>toggleSkill(skill)} aria-label={`Remove ${skill} from selection`}>{skill}<Icon name="close" size={13}/></button>)}</div>{selected.length>1 && <fieldset className="match-mode"><legend>Show work using</legend><label><input type="radio" name="skill-match" checked={matchMode==='all'} onChange={()=>setMatchMode('all')}/> All selected skills</label><label><input type="radio" name="skill-match" checked={matchMode==='any'} onChange={()=>setMatchMode('any')}/> Any selected skill</label></fieldset>}<p className="match-summary">{matchingProjects.length} {matchingProjects.length===1?'project':'projects'} · {matchingRepos.length} {matchingRepos.length===1?'repository':'repositories'}</p>{matchingProjects.length+matchingRepos.length===0 && <p>No linked work for this combination yet. Try “Any selected skill” or remove one.</p>}<div className="related-work">{matchingProjects.map(project=><button type="button" key={project.id} onClick={()=>onProject(project)}><span>Project · {project.skills.filter(skill=>selected.includes(skill)).join(', ')}</span>{project.title}<Icon name="plus" size={16}/></button>)}{matchingRepos.map(repo=><ExternalLink key={repo.id} href={repo.url}><span>Repository · {repo.skills.filter(skill=>selected.includes(skill)).join(', ')}</span>{repo.name}<Icon name="code" size={16}/></ExternalLink>)}</div><button type="button" className="text-button clear-skill" onClick={()=>setSelected([])}>Clear selection</button></>}</aside>
+    </div>
+  </div></section>
 }
 
 function Recognition() {
-  return (
-    <section className="section sectiontight" id="recognition">
-      <div className="wrap">
-        <SectionHead kicker="Beyond the code" title="Research, recognition, community." />
-        <div className="credgrid">
-          <div className="cred"><strong>GovHack 2025 Victorian State Winner</strong><span>CoBuild · civic technology and open data</span></div>
-          <div className="cred"><strong>Master of Data Science</strong><span>Deakin University · physical reasoning research · 2026</span></div>
-          <div className="cred"><strong>Technical speaker</strong><span>Docker and deployment consistency · Microsoft Melbourne office, 2026</span></div>
-        </div>
-      </div>
-    </section>
-  )
+  return <section className="section recognition-section" id="recognition"><div className="container"><SectionHead {...content.sections.recognition} number="05"/><div className="recognition-grid">{highlights.map((item,index)=><Reveal className="recognition-card" key={item.id}><span className="recognition-number">{String(index+1).padStart(2,'0')}</span><h3>{item.title}</h3><p className="recognition-subtitle">{item.subtitle}</p><p>{item.description}</p></Reveal>)}</div></div></section>
 }
 
 function Contact() {
-  return (
-    <section className="contact" id="contact">
-      <div className="wrap">
-        <div className="kicker">Let’s connect</div>
-        <h2>Have a problem worth solving?</h2>
-        <p>I’m exploring graduate and junior roles across software engineering, data science and applied AI. I’d be glad to talk about a role, collaboration or an interesting technical challenge.</p>
-        <div className="actions">
-          <a className="button primary" href={`mailto:${profile.email}`}>Email me</a>
-          <ExternalLink href={profile.linkedin} className="button secondary">LinkedIn</ExternalLink>
-          <ExternalLink href={profile.github} className="button secondary">GitHub</ExternalLink>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Footer() {
-  return (
-    <footer>
-      <div className="wrap foot">
-        <span>© 2026 Amritjot Singh · Melbourne, Australia</span>
-        <div className="footlinks">
-          <a href={`mailto:${profile.email}`}>Email</a>
-          <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
-          <a href="#top">Back to top</a>
-        </div>
-      </div>
-    </footer>
-  )
+  const [topic,setTopic] = useState(content.contact.topics[0] || '')
+  const [feedback,setFeedback] = useState('')
+  const timer = useRef(null)
+  useEffect(()=>()=>clearTimeout(timer.current),[])
+  async function copy() {
+    clearTimeout(timer.current)
+    try { await navigator.clipboard.writeText(profile.email); setFeedback('Email copied') }
+    catch { setFeedback(`Please copy: ${profile.email}`) }
+    timer.current=setTimeout(()=>setFeedback(''),6000)
+  }
+  return <section className="section contact-section" id="contact"><div className="container contact-grid"><Reveal><span className="eyebrow">Start a conversation</span><h2>{content.contact.title}</h2><p>{content.contact.description}</p></Reveal><Reveal className="contact-panel"><span className="contact-label">What’s on your mind?</span><div className="contact-topics">{content.contact.topics.map(item=><button type="button" className="pill" aria-pressed={topic===item} key={item} onClick={()=>setTopic(item)}>{item}</button>)}</div><a className="button primary email-button" href={`mailto:${profile.email}?subject=${encodeURIComponent(topic)}`}><Icon name="mail"/> Email {profile.name.split(' ')[0]}</a><div className="email-copy"><span>{profile.email}</span><button type="button" className="icon-button" onClick={copy} aria-label="Copy email address"><Icon name={feedback==='Email copied'?'check':'copy'}/></button></div><p className="copy-feedback" role="status">{feedback}</p><div className="social-links"><ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink><ExternalLink href={profile.github}>GitHub</ExternalLink><a href={asset(profile.resume)} download>Résumé</a></div></Reveal></div></section>
 }
 
 export default function App() {
-  return (
-    <>
-      <a className="skip" href="#main">Skip to content</a>
-      <Header />
-      <main id="main">
-        <Hero />
-        <Work />
-        <Repositories />
-        <About />
-        <Skills />
-        <Recognition />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+  const preferences = usePreferences()
+  const [focus,setFocus] = useState('All work')
+  const [project,setProject] = useState(null)
+  return <><a className="skip" href="#main">Skip to content</a><Header preferences={preferences}/><main id="main"><Hero setFocus={setFocus}/>{projects.length>0 && <Work focus={focus} setFocus={setFocus} onProject={setProject}/>} {repositories.length>0 && <Repositories/>}{experience.length>0 && <About/>}{skillGroups.length>0 && <Skills onProject={setProject}/>} {highlights.length>0 && <Recognition/>}<Contact/></main><footer className="footer"><div className="container"><span>© {new Date().getFullYear()} {profile.name}</span><span>{profile.location}</span><a href="#top">Back to top</a></div></footer>{project && <Dialog title={project.title} onClose={()=>setProject(null)}><span className="dialog-category">{project.category}</span><p>{project.description}</p>{project.highlights?.length>0 && <ul className="project-highlights">{project.highlights.map(item=><li key={item}>{item}</li>)}</ul>}<h3>Built with</h3><Tags items={project.tags}/>{project.url && <ExternalLink className="button primary" href={project.url}>Explore source code</ExternalLink>}</Dialog>}</>
 }

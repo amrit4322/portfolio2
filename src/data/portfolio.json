@@ -1,0 +1,414 @@
+{
+  "profile": {
+    "name": "Amritjot Singh",
+    "email": "amritjotsingh4322@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/amritjot-singh4322/",
+    "github": "https://github.com/amrit4322",
+    "resume": "Amritjot_Singh_Resume.pdf",
+    "portrait": "amritjot-portrait.webp",
+    "initials": "AS",
+    "role": "Software engineer · Data science graduate",
+    "location": "Melbourne, Australia",
+    "availability": "Open to graduate and junior opportunities",
+    "headline": "I build where",
+    "headlineAccent": "software meets intelligence.",
+    "bio": "I’m Amritjot, a Melbourne-based engineer turning complex problems into useful products. I work across full stack systems, applied AI and data, from civic technology to research in physical reasoning.",
+    "portraitAlt": "Portrait of Amritjot Singh"
+  },
+  "specialties": [
+    {
+      "id": "software",
+      "label": "Software",
+      "description": "Understand the problem. Design the system. Build something people can use.",
+      "tags": [
+        "React",
+        "FastAPI",
+        "Docker"
+      ],
+      "projectFocus": "Software"
+    },
+    {
+      "id": "ai",
+      "label": "AI & data",
+      "description": "Test ideas against evidence, from model evaluation to physical reasoning.",
+      "tags": [
+        "Python",
+        "PyTorch",
+        "Gymnasium"
+      ],
+      "projectFocus": "AI & data"
+    },
+    {
+      "id": "product",
+      "label": "Product",
+      "description": "Turn complex ideas into clear interfaces and useful experiences.",
+      "tags": [
+        "Next.js",
+        "Supabase",
+        "Realtime"
+      ],
+      "projectFocus": "Product"
+    }
+  ],
+  "projects": [
+    {
+      "id": "cobuild",
+      "category": "Civic technology",
+      "focus": "Software",
+      "title": "CoBuild",
+      "description": "Led the architecture and team delivery of a civic-data platform at GovHack 2025. We brought public datasets, mapping and scoring together to make urban-planning decisions easier to explore, all within 48 hours.",
+      "tags": [
+        "React",
+        "Node.js",
+        "Python",
+        "Public data"
+      ],
+      "badge": "Victorian State Winner",
+      "url": "https://github.com/amrit4322/coBuild",
+      "highlights": [
+        "Connected public datasets, mapping and scoring for urban-planning exploration.",
+        "Led technical direction during a 48-hour GovHack build."
+      ],
+      "skills": [
+        "React",
+        "Node.js",
+        "Python",
+        "JavaScript",
+        "Responsive UI",
+        "API design"
+      ]
+    },
+    {
+      "id": "piper",
+      "category": "AI research",
+      "focus": "AI & data",
+      "title": "PIPER",
+      "description": "My Deakin research compares PPO reinforcement learning with LLM and vision-language approaches on drawing-based physical reasoning. The experiments surfaced stronger trajectory and target performance for PPO, alongside stability limits.",
+      "tags": [
+        "Python",
+        "PyTorch",
+        "Gymnasium",
+        "Reinforcement learning"
+      ],
+      "highlights": [
+        "Compared PPO reinforcement learning with LLM and vision-language approaches.",
+        "Observed stronger trajectory and target performance for PPO, with stability limits."
+      ],
+      "skills": [
+        "Python",
+        "PyTorch",
+        "Gymnasium",
+        "PPO",
+        "Model evaluation"
+      ]
+    },
+    {
+      "id": "digispy",
+      "category": "Product building",
+      "focus": "Product",
+      "title": "DigiSpy",
+      "description": "An AI and cyber-safety learning platform for children. I’m building structured missions, agent accounts and live teacher controls that turn complex digital concepts into hands-on activities.",
+      "tags": [
+        "Next.js",
+        "Supabase",
+        "Realtime",
+        "Education"
+      ],
+      "highlights": [
+        "Structured missions and agent accounts for AI and cyber-safety learning.",
+        "Live teacher controls support guided classroom activities."
+      ],
+      "skills": [
+        "Next.js",
+        "TypeScript",
+        "React",
+        "Supabase",
+        "PostgreSQL",
+        "Responsive UI",
+        "API design"
+      ]
+    },
+    {
+      "id": "blockagile-note-wallet",
+      "category": "Backend engineering",
+      "focus": "Software",
+      "title": "BlockAgile & Note Wallet",
+      "description": "At Antier, I built dashboards and distributed services. BlockAgile reduced manual progress reporting by about 50%; gRPC service work on Note Wallet improved response time by about 30%.",
+      "tags": [
+        "React",
+        "FastAPI",
+        "gRPC",
+        "Docker"
+      ],
+      "highlights": [
+        "Built dashboards and distributed services at Antier.",
+        "Worked on progress reporting and gRPC response-time improvements."
+      ],
+      "skills": [
+        "React",
+        "FastAPI",
+        "gRPC",
+        "Docker",
+        "Python",
+        "API design",
+        "Performance optimisation"
+      ]
+    }
+  ],
+  "repositories": [
+    {
+      "id": "cobuild",
+      "type": "Civic data · React / Python",
+      "name": "coBuild",
+      "description": "GovHack prototype with mapping, feedback and planning views.",
+      "url": "https://github.com/amrit4322/coBuild",
+      "tags": [
+        "React",
+        "Python",
+        "Public data"
+      ],
+      "skills": [
+        "React",
+        "Node.js",
+        "Python",
+        "JavaScript",
+        "Responsive UI",
+        "API design"
+      ]
+    },
+    {
+      "id": "chatapp",
+      "type": "Realtime · React / Node",
+      "name": "chatApp",
+      "description": "Frontend and backend code for a real-time messaging application.",
+      "url": "https://github.com/amrit4322/chatApp",
+      "tags": [
+        "React",
+        "Node.js",
+        "WebSockets"
+      ],
+      "skills": [
+        "React",
+        "Node.js",
+        "JavaScript",
+        "WebSockets",
+        "Responsive UI"
+      ]
+    },
+    {
+      "id": "objectdetection",
+      "type": "Computer vision · Python",
+      "name": "objectDetection",
+      "description": "A containerised object detection application with a Python server and web templates.",
+      "url": "https://github.com/amrit4322/objectDetection",
+      "tags": [
+        "Python",
+        "Docker",
+        "OpenCV"
+      ],
+      "skills": [
+        "Python",
+        "Docker",
+        "OpenCV"
+      ]
+    },
+    {
+      "id": "8-2cdevsecops",
+      "type": "DevSecOps · CI/CD",
+      "name": "8.2CDevSecOps",
+      "description": "A public course project documenting security and delivery practice.",
+      "url": "https://github.com/amrit4322/8.2CDevSecOps",
+      "tags": [
+        "CI/CD",
+        "GitHub Actions",
+        "Security"
+      ],
+      "skills": [
+        "CI/CD",
+        "GitHub Actions",
+        "Security"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "data-science-research-deakin-university",
+      "date": "2025 — 2026",
+      "title": "Data science research · Deakin University",
+      "description": "Physical reasoning experiments across reinforcement learning and AI models.",
+      "details": [
+        "Physical reasoning experiments across reinforcement learning and AI models."
+      ]
+    },
+    {
+      "id": "govhack-victorian-state-winner",
+      "date": "2025",
+      "title": "GovHack Victorian State Winner",
+      "description": "Led CoBuild’s technical direction and delivery during a 48-hour build.",
+      "details": [
+        "Led CoBuild’s technical direction and delivery during a 48-hour build."
+      ]
+    },
+    {
+      "id": "software-engineer-antier-solutions",
+      "date": "2023 — 2024",
+      "title": "Software Engineer · Antier Solutions",
+      "description": "Built full stack features, APIs, analytics dashboards and distributed backend services.",
+      "details": [
+        "Built full stack features, APIs, analytics dashboards and distributed backend services."
+      ]
+    },
+    {
+      "id": "operations-inventory-id-logistics",
+      "date": "2025 — present",
+      "title": "Operations & Inventory · ID Logistics",
+      "description": "Investigate system and stock exceptions for Amazon client operations in Melbourne.",
+      "details": [
+        "Investigate system and stock exceptions for Amazon client operations in Melbourne."
+      ]
+    }
+  ],
+  "skillGroups": [
+    {
+      "id": "languages-and-foundations",
+      "title": "Languages and foundations",
+      "items": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "SQL",
+        "Java",
+        "C++",
+        "Data structures",
+        "OOP"
+      ]
+    },
+    {
+      "id": "frontend-and-product",
+      "title": "Frontend and product",
+      "items": [
+        "React",
+        "Next.js",
+        "HTML / CSS",
+        "Tailwind CSS",
+        "Responsive UI",
+        "UI components"
+      ]
+    },
+    {
+      "id": "backend-and-data",
+      "title": "Backend and data",
+      "items": [
+        "FastAPI",
+        "Node.js",
+        "Express",
+        "REST",
+        "gRPC",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "WebSockets",
+        "Supabase"
+      ]
+    },
+    {
+      "id": "ai-ml-and-analysis",
+      "title": "AI, ML and analysis",
+      "items": [
+        "PyTorch",
+        "scikit-learn",
+        "TensorFlow",
+        "OpenCV",
+        "YOLOv8",
+        "PPO",
+        "Gymnasium",
+        "Model evaluation"
+      ]
+    },
+    {
+      "id": "cloud-and-delivery",
+      "title": "Cloud, delivery and security",
+      "items": [
+        "Docker",
+        "Azure",
+        "AWS",
+        "Kubernetes",
+        "GitHub Actions",
+        "CI/CD",
+        "Security"
+      ]
+    },
+    {
+      "id": "engineering-habits",
+      "title": "Engineering habits",
+      "items": [
+        "API design",
+        "Unit and integration testing",
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery"
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "id": "govhack",
+      "title": "GovHack 2025",
+      "subtitle": "Victorian State Winner",
+      "description": "CoBuild · civic technology and open data."
+    },
+    {
+      "id": "degree",
+      "title": "Master of Data Science",
+      "subtitle": "Deakin University · 2026",
+      "description": "Physical reasoning research across reinforcement learning and AI models."
+    },
+    {
+      "id": "speaking",
+      "title": "Technical speaker",
+      "subtitle": "Microsoft Melbourne",
+      "description": "Docker and deployment consistency · Microsoft Melbourne office, 2026."
+    }
+  ],
+  "content": {
+    "about": {
+      "kicker": "Behind the work",
+      "title": "Curious enough to research it. Practical enough to ship it.",
+      "paragraphs": [
+        "I completed a Master of Data Science at Deakin after studying computer science engineering. That combination shapes how I work: test assumptions with data, design understandable systems, and build for the people who use them.",
+        "I’ve worked with teams across engineering, university and high-volume operations. Each setting has taught me to ask better questions and make systems easier to use."
+      ]
+    },
+    "contact": {
+      "title": "Let’s build something useful.",
+      "description": "I’m exploring graduate and junior roles across software engineering, data science and applied AI. I’d be glad to talk about a role, collaboration or an interesting technical challenge.",
+      "topics": [
+        "Job opportunity",
+        "Project collaboration",
+        "Technical conversation"
+      ]
+    },
+    "sections": {
+      "work": {
+        "kicker": "Selected work",
+        "title": "Explore what I’ve built.",
+        "intro": "From research experiments to products people can use. Open a project for the context and technology behind it."
+      },
+      "repositories": {
+        "kicker": "Public code",
+        "title": "Go beyond the interface.",
+        "intro": "Explore the source, experiments and engineering practice behind my work."
+      },
+      "skills": {
+        "kicker": "Technical toolkit",
+        "title": "Skills, with context.",
+        "intro": "Choose one or more skills to see the projects and repositories where I used them. Combine skills to narrow the results."
+      },
+      "recognition": {
+        "kicker": "Beyond the code",
+        "title": "Research. Recognition. Community."
+      }
+    }
+  }
+}
