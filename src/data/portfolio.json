@@ -4,7 +4,7 @@
     "email": "amritjotsingh4322@gmail.com",
     "linkedin": "https://www.linkedin.com/in/amritjotsingh4322/",
     "github": "https://github.com/amrit4322",
-    "resume": "Amritjot_Singh_Resume.pdf",
+    "resume": "AmritjotSingh_Resume.pdf",
     "portrait": "amritjot-portrait.webp",
     "initials": "AS",
     "role": "Software engineer · Data science graduate",
@@ -61,7 +61,9 @@
         "React",
         "Node.js",
         "Python",
-        "Public data"
+        "Public data",
+        "Machine Learning",
+        "LLM"
       ],
       "badge": "Victorian State Winner",
       "url": "https://github.com/amrit4322/coBuild",
@@ -75,7 +77,14 @@
         "Python",
         "JavaScript",
         "Responsive UI",
-        "API design"
+        "API design",
+        "UI components",
+        "Responsive UI",
+        "Model evaluation",
+        "scikit-learn",
+        "API design",
+        "Unit and integration testing",
+        "Debugging"
       ]
     },
     {
@@ -174,7 +183,14 @@
         "Python",
         "JavaScript",
         "Responsive UI",
-        "API design"
+        "API design",
+        "UI components",
+        "Responsive UI",
+        "Model evaluation",
+        "scikit-learn",
+        "API design",
+        "Unit and integration testing",
+        "Debugging"
       ]
     },
     {
@@ -190,10 +206,17 @@
       ],
       "skills": [
         "React",
+        "HTML/CSS",
+        "Bootstrap",
         "Node.js",
         "JavaScript",
+        "AWS",
         "WebSockets",
-        "Responsive UI"
+        "Security",
+        "Responsive UI",
+        "API design",
+        "Unit and integration testing",
+        "Debugging"
       ]
     },
     {
@@ -209,63 +232,101 @@
       ],
       "skills": [
         "Python",
+        "FastAPI",
+        "WebSockets",
+        "React",
+        "Bootstrap",
         "Docker",
-        "OpenCV"
+        "OpenCV",
+        "API design",
+        "Unit and integration testing",
+        "Debugging"
       ]
     },
     {
-      "id": "8-2cdevsecops",
-      "type": "DevSecOps · CI/CD",
-      "name": "8.2CDevSecOps",
-      "description": "A public course project documenting security and delivery practice.",
-      "url": "https://github.com/amrit4322/8.2CDevSecOps",
+      "id": "preet-siyaan",
+      "type": "Local business · Events & entertainment",
+      "name": "Preet Siyaan Entertainment",
+      "description": "Supporting a local events business by improving its website, helping visitors explore upcoming events and connect with the team.",
+      "url": "https://www.preetsiyaan.com/",
       "tags": [
-        "CI/CD",
-        "GitHub Actions",
-        "Security"
+        "Local business",
+        "Web development",
+        "Responsive design"
       ],
       "skills": [
-        "CI/CD",
-        "GitHub Actions",
-        "Security"
+        "React",
+        "HTML/CSS",
+        "Bootstrap",
+        "UI components",
+        "Responsive UI"
       ]
     }
   ],
   "experience": [
     {
-      "id": "data-science-research-deakin-university",
-      "date": "2025 — 2026",
-      "title": "Data science research · Deakin University",
-      "description": "Physical reasoning experiments across reinforcement learning and AI models.",
+      "id": "operations-inventory-id-logistics",
+      "date": "April 2026 — present",
+      "title": "Operations & Inventory · ID Logistics",
+      "description": "Investigate inventory and system exceptions for Amazon client operations in Melbourne.",
       "details": [
-        "Physical reasoning experiments across reinforcement learning and AI models."
+        "Use warehouse management systems to investigate stock and order discrepancies.",
+        "Reconcile inventory information and coordinate issue resolution with operational teams."
+      ]
+    },
+    {
+      "id": "data-science-research-deakin-university",
+      "date": "Jan 2025 — May 2026",
+      "title": "Data Science Research · Deakin University",
+      "description": "Researched physical reasoning through reinforcement learning, LLM and vision-language approaches.",
+      "details": [
+        "Developed simulation environments and PPO experiments for drawing-based physical reasoning.",
+        "Compared model performance across trajectory accuracy, target success and stability.",
+        "Analysed failure cases and documented findings as part of my Master of Data Science research."
+      ],
+      "tags": [
+        "Python",
+        "PyTorch",
+        "Gymnasium",
+        "Reinforcement learning"
+      ]
+    },
+    {
+      "id": "career-ambassador-deakintalent",
+      "date": "Feb 2025 — Nov 2025",
+      "title": "Career Ambassador · DeakinTALENT",
+      "description": "Helped students connect with university career services, resources and opportunities.",
+      "details": [
+        "Supported 500+ students with career guidance, résumé reviews and job-search advice.",
+        "Promoted DeakinTALENT programs during Orientation Week, Club Days and career events.",
+        "Created promotional resources and shared student feedback to improve engagement."
       ]
     },
     {
       "id": "govhack-victorian-state-winner",
-      "date": "2025",
-      "title": "GovHack Victorian State Winner",
-      "description": "Led CoBuild’s technical direction and delivery during a 48-hour build.",
+      "date": "Aug 2025",
+      "title": "GovHack Victorian State Winner · CoBuild",
+      "description": "Led technical direction and team delivery for an award-winning urban-planning prototype.",
       "details": [
-        "Led CoBuild’s technical direction and delivery during a 48-hour build."
+        "Coordinated solution architecture and development during a 48-hour hackathon.",
+        "Combined public datasets, interactive mapping and scoring to explore housing and infrastructure needs."
+      ],
+      "tags": [
+        "React",
+        "Node.js",
+        "Python",
+        "Public data"
       ]
     },
     {
       "id": "software-engineer-antier-solutions",
-      "date": "2023 — 2024",
+      "date": "Jul 2023 — Jun 2024",
       "title": "Software Engineer · Antier Solutions",
-      "description": "Built full stack features, APIs, analytics dashboards and distributed backend services.",
+      "description": "Built full-stack applications, APIs, dashboards and distributed backend services.",
       "details": [
-        "Built full stack features, APIs, analytics dashboards and distributed backend services."
-      ]
-    },
-    {
-      "id": "operations-inventory-id-logistics",
-      "date": "2025 — present",
-      "title": "Operations & Inventory · ID Logistics",
-      "description": "Investigate system and stock exceptions for Amazon client operations in Melbourne.",
-      "details": [
-        "Investigate system and stock exceptions for Amazon client operations in Melbourne."
+        "Developed project-management dashboards and backend workflows for BlockAgile.",
+        "Implemented service communication and API integrations for Note Wallet.",
+        "Tested and debugged application features and collaborated through Git-based development workflows."
       ]
     }
   ],
@@ -280,8 +341,10 @@
         "SQL",
         "Java",
         "C++",
+        "C#",
         "Data structures",
-        "OOP"
+        "OOP",
+        "Solidity"
       ]
     },
     {
@@ -290,10 +353,12 @@
       "items": [
         "React",
         "Next.js",
+        "Bootstrap",
         "HTML / CSS",
         "Tailwind CSS",
         "Responsive UI",
-        "UI components"
+        "UI components",
+        "Web3"
       ]
     },
     {
@@ -323,7 +388,9 @@
         "YOLOv8",
         "PPO",
         "Gymnasium",
-        "Model evaluation"
+        "Model evaluation",
+        "Reinforcement Learning",
+        "LLM"
       ]
     },
     {
@@ -357,19 +424,25 @@
       "id": "govhack",
       "title": "GovHack 2025",
       "subtitle": "Victorian State Winner",
-      "description": "CoBuild · civic technology and open data."
+      "description": "Led CoBuild’s technical direction and team delivery during a 48-hour civic technology hackathon."
     },
     {
-      "id": "degree",
-      "title": "Master of Data Science",
-      "subtitle": "Deakin University · 2026",
-      "description": "Physical reasoning research across reinforcement learning and AI models."
+      "id": "research-thesis",
+      "title": "Master’s Research Thesis",
+      "subtitle": "High Distinction · Deakin University",
+      "description": "Investigated physical reasoning across reinforcement learning, LLM and vision-language approaches through the PIPER project."
     },
     {
       "id": "speaking",
-      "title": "Technical speaker",
-      "subtitle": "Microsoft Melbourne",
-      "description": "Docker and deployment consistency · Microsoft Melbourne office, 2026."
+      "title": "Technical Speaker",
+      "subtitle": "Microsoft Melbourne · 2026",
+      "description": "Delivered a Docker session for founders and startups, explaining containerisation and deployment consistency."
+    },
+    {
+      "id": "community",
+      "title": "Community Leadership",
+      "subtitle": "DeakinTALENT · NSS",
+      "description": "Supported student career engagement at Deakin and coordinated volunteers and community-service events through NSS in India."
     }
   ],
   "content": {
