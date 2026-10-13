@@ -75,6 +75,7 @@
         "React",
         "Node.js",
         "Python",
+  
         "JavaScript",
         "Responsive UI",
         "API design",
@@ -84,7 +85,7 @@
         "scikit-learn",
         "API design",
         "Unit and integration testing",
-        "Debugging"
+        "Debugging",   "Azure", "Github Actions", "Security","REST"
       ]
     },
     {
@@ -108,7 +109,10 @@
         "PyTorch",
         "Gymnasium",
         "PPO",
-        "Model evaluation"
+        "Model evaluation",
+        "Reinforcement Learning",
+        "LLM",
+        "Tensorflow"
       ]
     },
     {
@@ -132,9 +136,17 @@
         "TypeScript",
         "React",
         "Supabase",
+        "Rest",
         "PostgreSQL",
         "Responsive UI",
-        "API design"
+        "API design",
+        "Security",
+        "Azure",
+        "Debugging",
+        "API design",
+        "Unit and integration testing",
+        "Github Actions",
+        "CI/CD"
       ]
     },
     {
@@ -155,13 +167,21 @@
       ],
       "skills": [
         "React",
-        "FastAPI",
+        "Nest.js",
+        "Node.js",
+        "Rest",
+        "PostgreSQL",
         "gRPC",
         "Docker",
-        "Python",
         "API design",
-        "Performance optimisation"
-      ]
+        "Performance optimisation",
+        "Solidity",
+        "Rest",
+        "Redis",
+        "Docker",
+        "Github Actions",
+      "CI/CD" 
+         ]
     }
   ],
   "repositories": [
@@ -181,6 +201,8 @@
         "React",
         "Node.js",
         "Python",
+        "Rest",
+        "FastAPI",
         "JavaScript",
         "Responsive UI",
         "API design",
@@ -208,6 +230,7 @@
         "React",
         "HTML/CSS",
         "Bootstrap",
+        "Rest",
         "Node.js",
         "JavaScript",
         "AWS",
