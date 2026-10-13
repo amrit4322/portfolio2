@@ -2,7 +2,7 @@
   "profile": {
     "name": "Amritjot Singh",
     "email": "amritjotsingh4322@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/amritjot-singh4322/",
+    "linkedin": "https://www.linkedin.com/in/amritjotsingh4322/",
     "github": "https://github.com/amrit4322",
     "resume": "Amritjot_Singh_Resume.pdf",
     "portrait": "amritjot-portrait.webp",
@@ -159,13 +159,14 @@
     {
       "id": "cobuild",
       "type": "Civic data · React / Python",
-      "name": "coBuild",
+      "name": "CoBuild",
       "description": "GovHack prototype with mapping, feedback and planning views.",
       "url": "https://github.com/amrit4322/coBuild",
       "tags": [
         "React",
         "Python",
-        "Public data"
+        "Public data",
+        "Machine Learning"
       ],
       "skills": [
         "React",
