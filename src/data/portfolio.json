@@ -112,7 +112,13 @@
         "Model evaluation",
         "Reinforcement Learning",
         "LLM",
-        "Tensorflow"
+        "Tensorflow",
+        "API design",
+        "Unit and integration testing",
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery"
       ]
     },
     {
@@ -142,9 +148,12 @@
         "API design",
         "Security",
         "Azure",
-        "Debugging",
         "API design",
         "Unit and integration testing",
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery",
         "Github Actions",
         "CI/CD"
       ]
@@ -174,7 +183,11 @@
         "gRPC",
         "Docker",
         "API design",
+        "Unit and integration testing",
+        "Debugging",
         "Performance optimisation",
+        "Code review",
+        "Agile delivery",
         "Solidity",
         "Rest",
         "Redis",
@@ -212,7 +225,10 @@
         "scikit-learn",
         "API design",
         "Unit and integration testing",
-        "Debugging"
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery"
       ]
     },
     {
@@ -239,7 +255,10 @@
         "Responsive UI",
         "API design",
         "Unit and integration testing",
-        "Debugging"
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery"
       ]
     },
     {
@@ -263,7 +282,10 @@
         "OpenCV",
         "API design",
         "Unit and integration testing",
-        "Debugging"
+        "Debugging",
+        "Performance optimisation",
+        "Code review",
+        "Agile delivery"
       ]
     },
     {
